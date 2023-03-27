@@ -40,8 +40,7 @@ public class BookManagement {
                     searchByBookName(bookList, input);
                     break;
                 case 6:
-                    //trường hợp 6 em chưa biết mình sai logic chỗ nào,hết giờ làm bài nên em khóa lại ạ
-//                    chanceBookStatus(bookList,input);
+                    chanceBookStatus(bookList,input);
                     break;
                 case 7:
                     System.out.println("Thoát khỏi chương trình");
@@ -88,6 +87,11 @@ public class BookManagement {
         System.out.println("Nhập Id sách mà bạn muốn xóa: ");
         int deleteId = scanner.nextInt();
         list.remove(deleteId);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getBookId() == deleteId) {
+            list.remove(list.get(i));
+            }
+        }
         System.out.println("Danh sách sau khi xóa: ");
         displayListBook(list);
     }
@@ -105,17 +109,19 @@ public class BookManagement {
         }
     }
 
-//    public static void chanceBookStatus(List<Book> list, Scanner scanner) {
-//        System.out.println("Nhập tên mã sách mà bạn muốn thay đổi:");
-//        int chanceId = scanner.nextInt();
-//        for (Book id : list) {
-//            if (id.getBookId() == chanceId) {
-//                id.isBookStatus() = !id.isBookStatus();
-//            }
-//        }
-//        System.out.println("List sau khi thay đổi: ");
-//        displayListBook(list);
-//    }
+    public static void chanceBookStatus(List<Book> list, Scanner scanner) {
+        System.out.println("Nhập tên mã sách mà bạn muốn thay đổi:");
+        int chanceId = scanner.nextInt();
+        for (Book id : list) {
+
+                 if (id.getBookId() == chanceId) {
+                id.setBookStatus(!id.isBookStatus());
+            }
+
+        }
+        System.out.println("List sau khi thay đổi: ");
+        displayListBook(list);
+    }
 
 
 }

@@ -111,6 +111,7 @@ public class Book implements IBook, Comparable<Book> {
         this.importPrice = scanner.nextInt();
         System.out.println("Nhap giá bán sách:");
         this.exportPrice = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Nhap trang thai sach: ");
         this.bookStatus = Boolean.parseBoolean(scanner.nextLine());
         this.interest = this.exportPrice-this.importPrice;
